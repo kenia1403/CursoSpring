@@ -1,6 +1,8 @@
 package com.bytecode.core.services.impl;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,14 +11,17 @@ import com.bytecode.core.services.PostService;
 
 @Service("serviceDecorado")
 public class PostServiceDecoradoImp implements PostService {
+	private final Log log = LogFactory.getLog(getClass());
+	
  @Autowired 
  private PostServiceImpl postServiceImpl;
  
  @Autowired 
- private PostServiceImpl postServiceImplDos;
+ private PostServiceImplDos postServiceImplDos;
  
 	@Override
-	public List<Post> validation(List<Post> posts) {
+	public List<Post> validation(List<Post> posts) throws NullPointerException{
+		log.debug(posts);
 		posts=postServiceImpl.validation(posts);
 		posts=postServiceImplDos.validation(posts);
 		for (Post post : posts) {
@@ -27,7 +32,6 @@ public class PostServiceDecoradoImp implements PostService {
 				throw new NullPointerException("la fecha es nulo");
 			}
 		}
-		System.out.println("Esta es la clase decorada");
 		return posts;	}
 
 	@Override

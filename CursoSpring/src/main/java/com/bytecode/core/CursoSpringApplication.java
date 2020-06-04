@@ -1,3 +1,4 @@
+
 package com.bytecode.core;
 
 import org.apache.commons.logging.Log;
@@ -14,12 +15,12 @@ import com.bytecode.core.services.PostService;
 
 @SpringBootApplication
 public class CursoSpringApplication implements CommandLineRunner {
-	Log log = LogFactory.getLog(getClass()); 
-	
+	Log log = LogFactory.getLog(getClass());
+
 	@Autowired
 	@Qualifier("beanConexion")
 	private Conexion conexion;
-	
+
 	@Autowired
 	@Qualifier("com.bytecode.core.beans.PostComponent")
 	public PostComponent postComponent;

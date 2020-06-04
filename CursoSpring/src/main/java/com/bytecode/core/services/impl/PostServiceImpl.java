@@ -18,7 +18,7 @@ public class PostServiceImpl implements PostService {
 		log.info("Servicio 1");
 
 		for (Post post : posts) {
-			if(post.getTitulo()==null) {
+			if (post.getTitulo() == null) {
 				throw new NullPointerException("El titulo es nulo");
 			}
 		}
@@ -28,7 +28,7 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public void addClass(Class clazz) {
 		System.out.println(clazz.getName());
-		
+
 	}
 
 }

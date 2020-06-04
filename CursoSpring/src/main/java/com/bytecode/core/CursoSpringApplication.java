@@ -15,7 +15,6 @@ import com.bytecode.core.services.PostService;
 
 @SpringBootApplication
 public class CursoSpringApplication implements CommandLineRunner {
-	Log log = LogFactory.getLog(getClass());
 
 	@Autowired
 	@Qualifier("beanConexion")
@@ -42,6 +41,7 @@ public class CursoSpringApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		Log log = LogFactory.getLog(getClass());
 		try {
 			postService.validation(postComponent.getPosts()).forEach((post) -> {
 				log.info(post.getTitulo());
